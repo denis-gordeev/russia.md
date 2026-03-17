@@ -338,25 +338,15 @@ import Layout from '../layouts/Layout.astro';
             };
             
             try {
-              const SCRIPT_URL = 'APPS_SCRIPT_URL';
-              if (SCRIPT_URL === 'APPS_SCRIPT_URL') {
-                // Fallback: mailto
-                const body = encodeURIComponent(
-                  `分類: ${data.category}\n來源: ${data.sourceType}\n參考: ${data.sourceRef}\n\n${data.content}\n\n— ${data.name} (${data.email})`
-                );
-                window.open(`mailto:cheyu.wu@monoame.com?subject=${encodeURIComponent('Taiwan.md 貢獻：' + (data.category || '未分類'))}&body=${body}`);
-                document.getElementById('contribute-form').style.display = 'none';
-                document.getElementById('success-msg').style.display = 'block';
-              } else {
-                await fetch(SCRIPT_URL, {
-                  method: 'POST',
-                  mode: 'no-cors',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(data)
-                });
-                document.getElementById('contribute-form').style.display = 'none';
-                document.getElementById('success-msg').style.display = 'block';
-              }
+              const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzuS3eCR6-cga-OCN34YY34vi0KnkYXYOQLs0VgsMd7WoMAn-gX9OH70Yd_UyF23_5vUA/exec';
+              await fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+              });
+              document.getElementById('contribute-form').style.display = 'none';
+              document.getElementById('success-msg').style.display = 'block';
             } catch (err) {
               alert('送出失敗，請直接寄 email 到 cheyu.wu@monoame.com');
               btn.disabled = false;
