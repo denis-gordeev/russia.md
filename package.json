@@ -9,6 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "sync": "bash scripts/sync.sh",
+    "sync:build": "bash scripts/sync.sh && astro build",
     "astro": "astro"
   },
   "dependencies": {
