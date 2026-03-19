@@ -1,0 +1,8 @@
+interface:
+  display_name: "Banking"
+  short_description: "Russian bank APIs for payments, statements, and payouts"
+  brand_color: "#1E3A8A"
+  default_prompt: "Use $banking to plan a safe reconciliation, payment, or payout workflow with a Russian bank API."
+
+policy:
+  allow_implicit_invocation: true

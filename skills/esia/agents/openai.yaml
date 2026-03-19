@@ -1,0 +1,8 @@
+interface:
+  display_name: "ESIA"
+  short_description: "Verified state identity and Gosuslugi flow planning"
+  brand_color: "#1D4ED8"
+  default_prompt: "Use $esia to map this Russian public-service flow into precheck, redirect, and post-auth steps."
+
+policy:
+  allow_implicit_invocation: true

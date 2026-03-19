@@ -33,7 +33,12 @@ This is still a foundation fork, not a finished editorial product. The active si
 - [x] Restore visible attribution that this project is a fork of `taiwan-md`
 - [x] Replace placeholder GitHub links on the site with the real fork URL
 - [x] Split the monolithic `SKILLS.md` brief into repository skill folders
+- [x] Add first-wave repo-local skills for ESIA, VK, VK ID, DaData, Yandex, CBR, and FNS
+- [x] Add `agents/openai.yaml` metadata for repo-local skills
+- [x] Add second-wave skills for banking and marketplaces
 - [ ] Finish DNS propagation for `www.russia-md.ru` and enable HTTPS
+- [ ] Add references and example payloads for each skill
+- [ ] Add skills for telecom, document-signature, and marketplace ops beyond the first wave
 - [ ] Add Russia-specific charts, maps, and supporting datasets
 - [ ] Expand each category beyond the single starter essay
 - [ ] Add a stronger editorial policy and sourcing checklist
@@ -51,6 +56,7 @@ npm run build
 - `russia-knowledge/` active source markdown used by category and article pages
 - `skills/` repo-local agent skills, one integration per folder
 - `.agents/skills` symlink target for Codex repository skill discovery
+- `skills/*/agents/openai.yaml` UI metadata and invocation defaults for skills
 - `legacy-content/` archived upstream content kept for reference
 - `legacy-pages/` archived upstream routes kept out of the active build
 - `public/llms.txt` AI-oriented project summary

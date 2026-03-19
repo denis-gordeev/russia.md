@@ -1,0 +1,8 @@
+interface:
+  display_name: "DaData"
+  short_description: "Russian-language enrichment for addresses and companies"
+  brand_color: "#059669"
+  default_prompt: "Use $dadata to normalize this Russian address or company record while preserving the raw input."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,8 @@
+interface:
+  display_name: "CBR"
+  short_description: "Central Bank reference rates and official finance data"
+  brand_color: "#B45309"
+  default_prompt: "Use $cbr to fetch or structure official Central Bank of Russia reference data."
+
+policy:
+  allow_implicit_invocation: true

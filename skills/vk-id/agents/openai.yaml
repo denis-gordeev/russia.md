@@ -1,0 +1,8 @@
+interface:
+  display_name: "VK ID"
+  short_description: "VK ID authentication, scopes, and account linking"
+  brand_color: "#2563EB"
+  default_prompt: "Use $vk-id to design a VK ID login, signup, or account-linking flow."
+
+policy:
+  allow_implicit_invocation: true

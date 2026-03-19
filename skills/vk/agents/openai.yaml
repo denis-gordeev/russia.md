@@ -1,0 +1,8 @@
+interface:
+  display_name: "VK"
+  short_description: "VK community, content, moderation, and support workflows"
+  brand_color: "#0077FF"
+  default_prompt: "Use $vk to design or review a VK content, moderation, or community-support workflow."
+
+policy:
+  allow_implicit_invocation: true

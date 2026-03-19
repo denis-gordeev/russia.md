@@ -1,0 +1,8 @@
+interface:
+  display_name: "FNS"
+  short_description: "Official Russian entity verification and registry checks"
+  brand_color: "#0F766E"
+  default_prompt: "Use $fns to verify this Russian company or tax identifier against official registry data."
+
+policy:
+  allow_implicit_invocation: true

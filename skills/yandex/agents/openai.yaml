@@ -1,0 +1,8 @@
+interface:
+  display_name: "Yandex"
+  short_description: "Yandex Maps geocoding, routing, and serviceability"
+  brand_color: "#DC2626"
+  default_prompt: "Use $yandex to plan this routing or address-resolution workflow for Russia."
+
+policy:
+  allow_implicit_invocation: true
