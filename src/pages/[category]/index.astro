@@ -30,7 +30,7 @@ export async function getStaticPaths() {
     const articles = [];
 
     try {
-      const zhFolderPath = resolve(process.cwd(), 'knowledge', folderName);
+      const zhFolderPath = resolve(process.cwd(), 'russia-knowledge', folderName);
       const zhFiles = await readdir(zhFolderPath);
       const zhMarkdownFiles = zhFiles.filter((file) => file.endsWith('.md') && !file.startsWith('_'));
 
@@ -48,14 +48,14 @@ export async function getStaticPaths() {
           readingTime: frontmatter.readingTime || null,
           date: frontmatter.date || null,
           featured: frontmatter.featured || false,
-          lang: 'zh-TW',
+          lang: 'en',
         });
       }
     } catch {}
 
     let hubContent = '';
     try {
-      const hubFolder = resolve(process.cwd(), 'knowledge', folderName);
+      const hubFolder = resolve(process.cwd(), 'russia-knowledge', folderName);
       const hubFiles = await readdir(hubFolder);
       const hubFile = hubFiles.find((f) => f.startsWith('_') && f.includes('Hub'));
       if (hubFile) {
@@ -158,8 +158,8 @@ const otherCategories = Object.keys(categoryConfig)
 ---
 
 <Layout 
-  title={`${categoryInfo.name} - Taiwan.md`}
-  description={`${categoryInfo.description} - 台灣知識庫`}
+  title={`${categoryInfo.name} - Russia.md`}
+  description={`${categoryInfo.description} - Russia knowledge base`}
 >
   <main class="category-page">
     <!-- Hero Banner -->
@@ -169,7 +169,7 @@ const otherCategories = Object.keys(categoryConfig)
         <h1 class="hero-title">{categoryInfo.name}</h1>
         <p class="hero-description">{categoryInfo.description}</p>
         <div class="hero-stats">
-          <span class="stats-badge">📚 {articles.length} 篇文章</span>
+          <span class="stats-badge">📚 {articles.length} articles</span>
         </div>
       </div>
       <div class="hero-decoration"></div>
@@ -178,7 +178,7 @@ const otherCategories = Object.keys(categoryConfig)
     <div class="container">
       <!-- Breadcrumb -->
       <nav class="breadcrumb">
-        <a href="/" class="breadcrumb-link">首頁</a>
+        <a href="/" class="breadcrumb-link">Home</a>
         <span class="separator">›</span>
         <span class="current">{categoryInfo.name}</span>
       </nav>
@@ -228,7 +228,7 @@ const otherCategories = Object.keys(categoryConfig)
       )}
 
       <!-- Articles Section -->
-      <h2 class="articles-heading">📖 延伸閱讀</h2>
+      <h2 class="articles-heading">📖 Further Reading</h2>
       {articles.length > 0 ? (
         <section class="articles-section">
           <div class="articles-grid">
@@ -246,11 +246,11 @@ const otherCategories = Object.keys(categoryConfig)
                           <span class="status-tag">{article.status}</span>
                         )}
                         {article.lang && (
-                          <span class="lang-tag">{article.lang === 'zh-TW' ? '中文' : 'EN'}</span>
+                          <span class="lang-tag">EN</span>
                         )}
                       </div>
                       {article.featured && (
-                        <div class="featured-badge">⭐ 精選</div>
+                        <div class="featured-badge">⭐ Featured</div>
                       )}
                     </div>
                     
@@ -261,7 +261,7 @@ const otherCategories = Object.keys(categoryConfig)
                     <div class="article-info">
                       {article.readingTime && (
                         <span class="info-item">
-                          📖 {article.readingTime} 分鐘
+                          📖 {article.readingTime} min
                         </span>
                       )}
                     </div>
@@ -275,23 +275,23 @@ const otherCategories = Object.keys(categoryConfig)
         <section class="coming-soon">
           <div class="coming-soon-content">
             <div class="coming-soon-icon">{categoryInfo.icon}</div>
-            <h2>內容準備中</h2>
-            <p>這個分類的文章正在努力製作中，敬請期待！</p>
-            <p class="category-desc">未來這裡將會有：{categoryInfo.description}</p>
+            <h2>More content is coming</h2>
+            <p>This category is still being rebuilt for the Russia fork.</p>
+            <p class="category-desc">Planned scope: {categoryInfo.description}</p>
             
             <div class="action-buttons">
-              <a href="/" class="btn-primary">返回首頁</a>
-              <a href="https://github.com/frank890417/taiwan-md" target="_blank" class="btn-secondary">
-                參與貢獻
+              <a href="/" class="btn-primary">Back home</a>
+              <a href="https://github.com/your-username/russia-md" target="_blank" class="btn-secondary">
+                Contribute
               </a>
             </div>
           </div>
         </section>
       )}
 
-      <!-- 探索其他面向 -->
+      <!-- Explore other categories -->
       <section class="explore-more">
-        <h2 class="explore-title">探索台灣其他面向</h2>
+        <h2 class="explore-title">Explore other categories</h2>
         <div class="categories-grid">
           {otherCategories.map(cat => (
             <a href={`/${cat.key}`} class="category-card" style={`border-color: ${cat.color}; color: ${cat.color};`}>

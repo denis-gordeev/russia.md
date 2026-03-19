@@ -14,14 +14,14 @@ function buildGitCache(): Map<string, { contributors: string[]; lastModified: st
   try {
     // Use -z for NUL-delimited output to handle Unicode filenames
     const logOutput = execSync(
-      `git -c core.quotePath=false log --name-only --format="COMMIT_BY:%an" -- "knowledge/"`,
+      `git -c core.quotePath=false log --name-only --format="COMMIT_BY:%an" -- "russia-knowledge/"`,
       { encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024 }
     );
     let currentAuthor = '';
     for (const line of logOutput.split('\n')) {
       if (line.startsWith('COMMIT_BY:')) {
         currentAuthor = line.slice(10);
-      } else if (line.startsWith('knowledge/') && line.endsWith('.md')) {
+      } else if (line.startsWith('russia-knowledge/') && line.endsWith('.md')) {
         const key = resolve(process.cwd(), line);
         const entry = _gitCache.get(key) || { contributors: [], lastModified: '' };
         if (!entry.contributors.includes(currentAuthor)) {
@@ -31,7 +31,7 @@ function buildGitCache(): Map<string, { contributors: string[]; lastModified: st
       }
     }
     const dateOutput = execSync(
-      `git -c core.quotePath=false log --format="COMMIT_DATE:%aI" --name-only -- "knowledge/"`,
+      `git -c core.quotePath=false log --format="COMMIT_DATE:%aI" --name-only -- "russia-knowledge/"`,
       { encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024 }
     );
     let currentDate = '';
@@ -39,7 +39,7 @@ function buildGitCache(): Map<string, { contributors: string[]; lastModified: st
     for (const line of dateOutput.split('\n')) {
       if (line.startsWith('COMMIT_DATE:')) {
         currentDate = line.slice(12);
-      } else if (line.startsWith('knowledge/') && line.endsWith('.md')) {
+      } else if (line.startsWith('russia-knowledge/') && line.endsWith('.md')) {
         const key = resolve(process.cwd(), line);
         if (!seenFiles.has(key)) {
           seenFiles.add(key);
@@ -79,7 +79,7 @@ export async function getStaticPaths() {
 
   for (const [categorySlug, folderName] of Object.entries(categoryMapping)) {
     try {
-      const zhFolderPath = resolve(process.cwd(), 'knowledge', folderName);
+      const zhFolderPath = resolve(process.cwd(), 'russia-knowledge', folderName);
       const zhFiles = await readdir(zhFolderPath);
       const zhMarkdownFiles = zhFiles.filter((file) => file.endsWith('.md') && !file.startsWith('_'));
 
@@ -98,7 +98,7 @@ export async function getStaticPaths() {
             description: frontmatter.description || '',
             content,
             frontmatter,
-            lang: 'zh-TW',
+            lang: 'en',
             contributors: gitInfo.contributors,
             lastModified: gitInfo.lastModified,
           },
@@ -146,7 +146,7 @@ let relatedArticles: any[] = [];
 try {
   const folderName = categoryMapping[category as string];
   if (folderName) {
-    const categoryFolderPath = resolve(process.cwd(), 'knowledge', folderName);
+    const categoryFolderPath = resolve(process.cwd(), 'russia-knowledge', folderName);
     const files = await readdir(categoryFolderPath);
     const markdownFiles = files.filter((file) => file.endsWith('.md') && !file.startsWith('_'));
 
@@ -176,7 +176,7 @@ try {
   for (const [catSlug, folderName] of Object.entries(categoryMapping)) {
     if (catSlug === category) continue;
     try {
-      const catPath = resolve(process.cwd(), 'knowledge', folderName);
+      const catPath = resolve(process.cwd(), 'russia-knowledge', folderName);
       const catFiles = await readdir(catPath);
       for (const file of catFiles.filter(f => f.endsWith('.md') && !f.startsWith('_'))) {
         const articleSlug = basename(file, '.md');
@@ -236,7 +236,7 @@ const processedContent = marked.parse(resolvedContent, { renderer });
     <section class="article-header-banner" style={`background: ${categoryInfo.gradient};`}>
       <div class="header-content">
         <nav class="breadcrumb-header">
-          <a href="/" class="breadcrumb-link">首頁</a>
+        <a href="/" class="breadcrumb-link">Home</a>
           <span class="separator">›</span>
           <a href={`/${category}`} class="breadcrumb-link">{categoryInfo.name}</a>
           <span class="separator">›</span>
@@ -262,14 +262,14 @@ const processedContent = marked.parse(resolvedContent, { renderer });
             {frontmatter.readingTime && (
               <div class="meta-item">
                 <span class="meta-icon">📖</span>
-                <span>{frontmatter.readingTime} 分鐘閱讀</span>
+                <span>{frontmatter.readingTime} min read</span>
               </div>
             )}
             
             {frontmatter.date && (
               <div class="meta-item">
                 <span class="meta-icon">📅</span>
-                <span>{new Date(frontmatter.date).toLocaleDateString('zh-TW')}</span>
+                <span>{new Date(frontmatter.date).toLocaleDateString('en-US')}</span>
               </div>
             )}
 
@@ -283,7 +283,7 @@ const processedContent = marked.parse(resolvedContent, { renderer });
           {lang && (
             <div class="lang-badge">
               <span class="meta-icon">🌐</span>
-              <span>{lang === 'zh-TW' ? '繁體中文' : 'English'}</span>
+              <span>English</span>
             </div>
           )}
         </div>
@@ -292,7 +292,7 @@ const processedContent = marked.parse(resolvedContent, { renderer });
           <div class="article-contributors">
             {contributors.length > 0 && (
               <div class="contributors-list">
-                <span class="contributors-label">✏️ 貢獻者</span>
+                <span class="contributors-label">✏️ Contributors</span>
                 <div class="contributors-names">
                   {contributors.map((name: string) => (
                     <a href={`https://github.com/${name}`} target="_blank" rel="noopener noreferrer" class="contributor-chip">{name}</a>
@@ -302,8 +302,8 @@ const processedContent = marked.parse(resolvedContent, { renderer });
             )}
             {lastModified && (
               <div class="last-modified">
-                <span class="modified-label">🔄 最後修訂</span>
-                <span class="modified-date">{new Date(lastModified).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                <span class="modified-label">🔄 Last updated</span>
+                <span class="modified-date">{new Date(lastModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
               </div>
             )}
           </div>
@@ -314,7 +314,7 @@ const processedContent = marked.parse(resolvedContent, { renderer });
         
         {frontmatter.source && (
           <div class="sources">
-            <h3>參考資料</h3>
+            <h3>Sources</h3>
             <ul>
               {frontmatter.source.map((url: string) => (
                 <li><a href={url} target="_blank" rel="noopener">{url}</a></li>
@@ -336,9 +336,9 @@ const processedContent = marked.parse(resolvedContent, { renderer });
           </div>
           
           <div class="share-section">
-            <span class="share-label">分享這篇文章：</span>
+            <span class="share-label">Share this article:</span>
             <div class="share-buttons">
-              <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://taiwan.md/${category}/${slug}`)}`} 
+              <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://russia-md.ru/${category}/${slug}`)}`} 
                  target="_blank" 
                  class="share-btn twitter">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -346,7 +346,7 @@ const processedContent = marked.parse(resolvedContent, { renderer });
                 </svg>
                 Twitter
               </a>
-              <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://taiwan.md/${category}/${slug}`)}`} 
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://russia-md.ru/${category}/${slug}`)}`} 
                  target="_blank" 
                  class="share-btn facebook">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -361,7 +361,7 @@ const processedContent = marked.parse(resolvedContent, { renderer });
         <!-- 延伸閱讀：同分類其他文章 -->
         {relatedArticles.length > 0 && (
           <div class="related-articles">
-            <h3 class="related-title">延伸閱讀</h3>
+            <h3 class="related-title">Related reading</h3>
             <div class="related-grid">
               {relatedArticles.map(article => (
                 <a href={`/${article.category}/${article.slug}`} class="related-card" style={`border-color: ${categoryInfo.color};`}>
@@ -382,14 +382,14 @@ const processedContent = marked.parse(resolvedContent, { renderer });
         {allArticles.length > 0 && (
           <div class="random-explore">
             <button class="random-btn" onclick="goRandomArticle()" type="button">
-              🎲 隨機探索另一篇
+              🎲 Open a random article
             </button>
           </div>
         )}
 
         <!-- More Articles -->
         <div class="more-articles">
-          <h3 class="more-title">探索更多台灣面向</h3>
+          <h3 class="more-title">Explore more of Russia</h3>
           <div class="more-grid">
             {otherCategories.map(cat => (
               <a href={`/${cat.key}`} class="more-card" style={`border-color: ${cat.color};`}>
@@ -410,7 +410,7 @@ const processedContent = marked.parse(resolvedContent, { renderer });
           <!-- 推薦下一篇 (Retention Loop) -->
           {relatedArticles.length > 0 && (
             <div class="recommended-reading">
-              <h3 class="footer-section-title">你可能也會喜歡</h3>
+              <h3 class="footer-section-title">You may also like</h3>
               <div class="recommended-grid">
                 {relatedArticles.slice(0, 2).map(article => (
                   <a href={`/${article.category}/${article.slug}`} class="recommended-card">
@@ -429,30 +429,29 @@ const processedContent = marked.parse(resolvedContent, { renderer });
 
           <!-- Edit on GitHub (Contribution Funnel) -->
           <div class="contribute-section">
-            <h3 class="footer-section-title">幫助改善內容</h3>
+            <h3 class="footer-section-title">Help improve this page</h3>
             <p class="contribute-note">
-              本文內容由 AI 初步生成，希望集結大家的力量，讓內容越來越完整、正確！<br>
-              如果您發現任何問題，或手邊有更多推薦的資料來源，歡迎直接編輯或<a href="mailto:cheyu.wu@monoame.com">聯繫我們</a>。<br>
-              感謝每一位用心 feedback 的朋友！
+              This fork is still in an early editorial stage. If you find gaps, weak wording, or better sources,
+              open a PR or file an issue.
             </p>
             <div class="contribute-actions">
               <a 
-                href={`https://github.com/frank890417/taiwan-md/edit/main/knowledge/${categoryMapping[category as string]}/${slug}.md`}
+                href={`https://github.com/your-username/russia-md/edit/main/russia-knowledge/${categoryMapping[category as string]}/${slug}.md`}
                 target="_blank" 
                 class="contribute-btn edit-btn"
                 rel="noopener"
               >
                 <span class="contribute-icon">📝</span>
-                <span>在 GitHub 上編輯此頁</span>
+                <span>Edit on GitHub</span>
               </a>
               <a 
-                href={`https://github.com/frank890417/taiwan-md/issues/new?title=${encodeURIComponent(`Feedback: ${title}`)}`}
+                href={`https://github.com/your-username/russia-md/issues/new?title=${encodeURIComponent(`Feedback: ${title}`)}`}
                 target="_blank" 
                 class="contribute-btn issue-btn"
                 rel="noopener"
               >
                 <span class="contribute-icon">💬</span>
-                <span>回報問題</span>
+                <span>Open an issue</span>
               </a>
             </div>
           </div>
@@ -461,25 +460,25 @@ const processedContent = marked.parse(resolvedContent, { renderer });
 
           <!-- 社交分享 (Sharing Loop) -->
           <div class="social-sharing">
-            <h3 class="footer-section-title">分享給更多人</h3>
+            <h3 class="footer-section-title">Share it</h3>
             <div class="sharing-buttons">
               <a 
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://taiwan.md/${category}/${slug}`)}`}
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://russia-md.ru/${category}/${slug}`)}`}
                 target="_blank" 
                 class="share-button twitter-btn"
                 rel="noopener"
               >
                 <span class="share-icon">𝕏</span>
-                <span>分享到 X</span>
+                <span>Share to X</span>
               </a>
               <a 
-                href={`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(`https://taiwan.md/${category}/${slug}`)}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://russia-md.ru/${category}/${slug}`)}`}
                 target="_blank" 
                 class="share-button line-btn"
                 rel="noopener"
               >
-                <span class="share-icon">💚</span>
-                <span>分享到 LINE</span>
+                <span class="share-icon">f</span>
+                <span>Share to Facebook</span>
               </a>
               <button 
                 class="share-button copy-btn"
@@ -487,7 +486,7 @@ const processedContent = marked.parse(resolvedContent, { renderer });
                 type="button"
               >
                 <span class="share-icon">📋</span>
-                <span>複製連結</span>
+                <span>Copy link</span>
               </button>
             </div>
           </div>
@@ -497,10 +496,10 @@ const processedContent = marked.parse(resolvedContent, { renderer });
       <!-- Navigation -->
       <div class="article-navigation">
         <a href={`/${category}`} class="nav-btn back-btn" style={`background: ${categoryInfo.color};`}>
-          ← 返回 {categoryInfo.name}
+          ← Back to {categoryInfo.name}
         </a>
         <a href="/" class="nav-btn home-btn">
-          返回首頁
+          Back home
         </a>
       </div>
     </div>
