@@ -1,0 +1,7 @@
+{
+  "document_type": "contract",
+  "signature_mode": "sequential",
+  "requires_certificate_check": true,
+  "requires_human_review": true,
+  "archive_required": true
+}

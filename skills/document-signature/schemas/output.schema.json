@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "document_type",
+    "signature_mode",
+    "requires_certificate_check",
+    "requires_human_review",
+    "archive_required"
+  ],
+  "properties": {
+    "document_type": {
+      "type": "string",
+      "enum": ["contract", "hr", "filing", "internal"]
+    },
+    "signature_mode": {
+      "type": "string",
+      "enum": ["single", "sequential", "parallel", "countersign"]
+    },
+    "requires_certificate_check": {
+      "type": "boolean"
+    },
+    "requires_human_review": {
+      "type": "boolean"
+    },
+    "archive_required": {
+      "type": "boolean"
+    }
+  }
+}

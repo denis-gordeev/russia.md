@@ -1,0 +1,7 @@
+{
+  "channel": "sms",
+  "task_type": "otp",
+  "provider_strategy": "primary_sms_with_voice_fallback",
+  "requires_consent_check": true,
+  "fallback_defined": true
+}

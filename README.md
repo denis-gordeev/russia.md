@@ -43,12 +43,15 @@ This is still a foundation fork, not a finished editorial product. The active si
 - [x] Add a dedicated CI workflow for skill validation outside deploys
 - [x] Add cross-skill composition guides for identity, onboarding, and marketplace workflows
 - [ ] Finish DNS propagation for `www.russia-md.ru` and enable HTTPS
-- [ ] Add skills for telecom, document-signature, and marketplace ops beyond the first wave
+- [x] Add skills for telecom, document-signature, and marketplace ops beyond the first wave
 - [ ] Add icons/assets for high-value skills in `agents/openai.yaml`
 - [ ] Add scripts/templates for high-friction integration workflows
 - [ ] Add richer schema coverage for nested objects and stricter cross-field validation
 - [ ] Add pull-request checks for content quality and editorial consistency
 - [ ] Add machine-readable composition manifests for multi-skill orchestration
+- [ ] Add scenario templates for OTP recovery, signature packets, and marketplace incident response
+- [ ] Add validation that every skill ships metadata, references, schemas, and examples together
+- [ ] Add higher-level operator playbooks that connect skills to site content and category pages
 - [ ] Add Russia-specific charts, maps, and supporting datasets
 - [ ] Expand each category beyond the single starter essay
 - [ ] Add a stronger editorial policy and sourcing checklist
@@ -75,6 +78,7 @@ npm run build
 - `skills/*/schemas/` per-skill JSON schema definitions for output contracts
 - `scripts/validate-skill-examples.mjs` local and CI validator for skill examples
 - `.github/workflows/skills.yml` standalone CI workflow for skill validation
+- `skills/telecom/`, `skills/document-signature/`, and `skills/marketplace-ops/` third-wave operational skills
 - `legacy-content/` archived upstream content kept for reference
 - `legacy-pages/` archived upstream routes kept out of the active build
 - `public/llms.txt` AI-oriented project summary

@@ -1,0 +1,8 @@
+interface:
+  display_name: "Marketplace Ops"
+  short_description: "Incident handling, returns, claims, and seller support queues"
+  brand_color: "#9333EA"
+  default_prompt: "Use $marketplace-ops to triage a Russian marketplace incident, return, claim, or seller-support workflow."
+
+policy:
+  allow_implicit_invocation: true

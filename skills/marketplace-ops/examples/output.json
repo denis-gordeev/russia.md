@@ -1,0 +1,7 @@
+{
+  "platform": "ozon",
+  "incident_type": "returns",
+  "severity": "high",
+  "requires_operator_queue": true,
+  "audit_log_required": true
+}

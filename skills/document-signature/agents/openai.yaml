@@ -1,0 +1,8 @@
+interface:
+  display_name: "Document Signature"
+  short_description: "Signing workflows, approval gates, and evidence capture"
+  brand_color: "#7C2D12"
+  default_prompt: "Use $document-signature to design a Russian document-signing flow with explicit review and evidence checkpoints."
+
+policy:
+  allow_implicit_invocation: true

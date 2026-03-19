@@ -1,0 +1,8 @@
+interface:
+  display_name: "Telecom"
+  short_description: "Russian SMS, voice OTP, routing, and failover workflows"
+  brand_color: "#0F766E"
+  default_prompt: "Use $telecom to design or review a Russian SMS, voice OTP, or telecom-routing workflow."
+
+policy:
+  allow_implicit_invocation: true

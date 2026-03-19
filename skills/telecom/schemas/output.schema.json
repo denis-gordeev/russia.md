@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "channel",
+    "task_type",
+    "provider_strategy",
+    "requires_consent_check",
+    "fallback_defined"
+  ],
+  "properties": {
+    "channel": {
+      "type": "string",
+      "enum": ["sms", "voice", "flash-call", "multi"]
+    },
+    "task_type": {
+      "type": "string",
+      "enum": ["otp", "transactional", "support", "routing"]
+    },
+    "provider_strategy": {
+      "type": "string"
+    },
+    "requires_consent_check": {
+      "type": "boolean"
+    },
+    "fallback_defined": {
+      "type": "boolean"
+    }
+  }
+}

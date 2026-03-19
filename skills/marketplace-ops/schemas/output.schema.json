@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "platform",
+    "incident_type",
+    "severity",
+    "requires_operator_queue",
+    "audit_log_required"
+  ],
+  "properties": {
+    "platform": {
+      "type": "string",
+      "enum": ["ozon", "wildberries", "yandex-market", "multi"]
+    },
+    "incident_type": {
+      "type": "string",
+      "enum": ["orders", "returns", "claims", "sla", "rollback", "support"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "requires_operator_queue": {
+      "type": "boolean"
+    },
+    "audit_log_required": {
+      "type": "boolean"
+    }
+  }
+}
