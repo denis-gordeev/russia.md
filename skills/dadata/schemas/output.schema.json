@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DaData Skill Output",
+  "type": "object",
+  "required": ["input_type", "raw_input", "normalized_value", "confidence", "alternatives", "needs_official_verification"],
+  "properties": {
+    "input_type": { "type": "string", "enum": ["address", "company", "person", "email"] },
+    "raw_input": { "type": "string" },
+    "normalized_value": { "type": "string" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "alternatives": { "type": "array", "items": { "type": "string" } },
+    "needs_official_verification": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

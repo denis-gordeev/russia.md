@@ -48,3 +48,4 @@ Use this skill for official entity verification and registration-aware checks.
 
 - See `references/integration-notes.md` for freshness and verification guidance.
 - See `examples/output.json` for a minimal result shape.
+- See `schemas/output.schema.json` for the output contract schema.

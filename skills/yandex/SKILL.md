@@ -49,3 +49,4 @@ Use this skill for location-heavy workflows built on Yandex APIs.
 
 - See `references/integration-notes.md` for routing and geocoding cautions.
 - See `examples/output.json` for a minimal result shape.
+- See `schemas/output.schema.json` for the output contract schema.

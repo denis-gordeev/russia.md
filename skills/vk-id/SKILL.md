@@ -49,3 +49,4 @@ Use this skill for low-friction authentication and identity workflows built on V
 
 - See `references/integration-notes.md` for scope and account-linking guidance.
 - See `examples/output.json` for a minimal result shape.
+- See `schemas/output.schema.json` for the output contract schema.

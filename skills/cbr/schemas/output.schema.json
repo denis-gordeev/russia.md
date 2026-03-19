@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CBR Skill Output",
+  "type": "object",
+  "required": ["dataset", "published_at", "retrieved_at", "values", "advice_disclaimer"],
+  "properties": {
+    "dataset": { "type": "string", "enum": ["fx", "directory", "reference"] },
+    "published_at": { "type": "string" },
+    "retrieved_at": { "type": "string" },
+    "values": { "type": "object" },
+    "advice_disclaimer": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

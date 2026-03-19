@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VK ID Skill Output",
+  "type": "object",
+  "required": ["identity_goal", "requested_scopes", "required_after_auth", "account_linking_strategy", "requires_human_approval"],
+  "properties": {
+    "identity_goal": { "type": "string", "enum": ["login", "signup", "link", "recovery"] },
+    "requested_scopes": { "type": "array", "items": { "type": "string" } },
+    "required_after_auth": { "type": "array", "items": { "type": "string" } },
+    "account_linking_strategy": { "type": "string" },
+    "requires_human_approval": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

@@ -56,3 +56,4 @@ Use this skill for VK platform operations outside pure identity.
 
 - See `references/integration-notes.md` for permission and moderation guidance.
 - See `examples/output.json` for a minimal result shape.
+- See `schemas/output.schema.json` for the output contract schema.

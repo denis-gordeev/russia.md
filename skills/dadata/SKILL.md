@@ -49,3 +49,4 @@ Use this skill for high-leverage normalization and suggestion workflows in Russi
 
 - See `references/integration-notes.md` for normalization and verification guidance.
 - See `examples/output.json` for a minimal result shape.
+- See `schemas/output.schema.json` for the output contract schema.

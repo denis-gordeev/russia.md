@@ -60,3 +60,4 @@ Return a compact machine-readable summary like:
 
 - See `references/integration-notes.md` for practical integration boundaries and handoff patterns.
 - See `examples/output.json` for a minimal result shape.
+- See `schemas/output.schema.json` for the output contract schema.

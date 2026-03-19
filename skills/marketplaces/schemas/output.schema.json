@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marketplaces Skill Output",
+  "type": "object",
+  "required": ["platform", "surface", "suggested_actions", "requires_human_approval", "change_log_required"],
+  "properties": {
+    "platform": { "type": "string", "enum": ["ozon", "wildberries", "yandex-market", "multi"] },
+    "surface": { "type": "string", "enum": ["catalog", "stock", "pricing", "orders", "ads", "reporting"] },
+    "suggested_actions": { "type": "array", "items": { "type": "string" } },
+    "requires_human_approval": { "type": "boolean" },
+    "change_log_required": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

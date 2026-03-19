@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FNS Skill Output",
+  "type": "object",
+  "required": ["query_type", "official_match", "entity_status", "freshness_note", "risk_note"],
+  "properties": {
+    "query_type": { "type": "string", "enum": ["inn", "company_name", "ogrn"] },
+    "official_match": { "type": "boolean" },
+    "entity_status": { "type": "string" },
+    "freshness_note": { "type": "string" },
+    "risk_note": { "type": "string" }
+  },
+  "additionalProperties": true
+}

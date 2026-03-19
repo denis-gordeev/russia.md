@@ -52,3 +52,4 @@ Use this skill for seller-side marketplace operations across the main Russian pl
 
 - See `references/integration-notes.md` for mutation logging and policy boundaries.
 - See `examples/output.json` for a minimal result shape.
+- See `schemas/output.schema.json` for the output contract schema.

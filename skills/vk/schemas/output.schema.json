@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VK Skill Output",
+  "type": "object",
+  "required": ["scope", "actor", "requested_permissions", "suggested_actions", "requires_human_approval"],
+  "properties": {
+    "scope": { "type": "string", "enum": ["content", "community", "support"] },
+    "actor": { "type": "string", "enum": ["user", "group", "service"] },
+    "requested_permissions": { "type": "array", "items": { "type": "string" } },
+    "suggested_actions": { "type": "array", "items": { "type": "string" } },
+    "requires_human_approval": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

@@ -47,3 +47,4 @@ Use this skill for official central-bank reference data in finance workflows.
 
 - See `references/integration-notes.md` for timestamping and finance-reporting notes.
 - See `examples/output.json` for a minimal result shape.
+- See `schemas/output.schema.json` for the output contract schema.

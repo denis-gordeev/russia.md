@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ESIA Skill Output",
+  "type": "object",
+  "required": ["auth_required", "flow_stage", "required_fields", "missing_fields", "next_step", "official_entrypoint"],
+  "properties": {
+    "auth_required": { "type": "boolean" },
+    "flow_stage": { "type": "string", "enum": ["precheck", "redirect", "post-auth"] },
+    "required_fields": { "type": "array", "items": { "type": "string" } },
+    "missing_fields": { "type": "array", "items": { "type": "string" } },
+    "next_step": { "type": "string" },
+    "official_entrypoint": { "type": "string", "format": "uri" }
+  },
+  "additionalProperties": true
+}

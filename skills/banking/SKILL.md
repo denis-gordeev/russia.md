@@ -52,3 +52,4 @@ Use this skill for contract-backed bank integrations in Russian business workflo
 
 - See `references/integration-notes.md` for approval boundaries and reconciliation patterns.
 - See `examples/output.json` for a minimal result shape.
+- See `schemas/output.schema.json` for the output contract schema.

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Banking Skill Output",
+  "type": "object",
+  "required": ["bank_surface", "requested_actions", "read_only_first", "requires_human_approval", "audit_log_required"],
+  "properties": {
+    "bank_surface": { "type": "string", "enum": ["statements", "payments", "payouts", "acquiring", "support"] },
+    "requested_actions": { "type": "array", "items": { "type": "string" } },
+    "read_only_first": { "type": "boolean" },
+    "requires_human_approval": { "type": "boolean" },
+    "audit_log_required": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}
