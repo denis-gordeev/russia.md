@@ -4,21 +4,22 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="About Russia.md"
-  description="Why this fork exists, what it covers, and how to extend it into a larger Russia-focused knowledge base."
+  description="Why this fork of taiwan-md exists, what it covers, and how to extend it into a larger Russia-focused knowledge base."
 >
   <main class="page">
     <section class="wrap">
       <p class="eyebrow">About</p>
       <h1>Why this project exists</h1>
       <p>
-        `Russia.md` is an open-source country knowledge-base project rebuilt as a starter site about Russia.
-        The intent is to preserve a useful category-driven structure while replacing mismatched assumptions,
-        navigation, and starter content with Russia-first material.
+        `Russia.md` is an open-source country knowledge-base fork of
+        <a href="https://github.com/frank890417/taiwan-md" target="_blank" rel="noopener">`taiwan-md`</a>,
+        rebuilt as a starter site about Russia. The intent is to preserve a useful category-driven structure
+        while replacing mismatched assumptions, navigation, and starter content with Russia-first material.
       </p>
       <p>
         This version is a foundation, not a finished encyclopedia. It keeps the site architecture and the
         category-driven reading model, then seeds each section with one Russia-focused article so contributors
-        can expand it without carrying over country-specific baggage from an earlier prototype.
+        can expand it without pretending the project was built from scratch.
       </p>
     </section>
 
@@ -27,6 +28,7 @@ import Layout from '../layouts/Layout.astro';
         <h2>What’s included</h2>
         <ul>
           <li>A rewritten landing page and site shell</li>
+          <li>Explicit fork lineage back to `taiwan-md`</li>
           <li>Russia-specific category descriptions</li>
           <li>Starter essays across 12 categories</li>
           <li>A practical <a href="/SKILLS.md">SKILLS.md</a> for LLM-agent integrations</li>
@@ -37,7 +39,7 @@ import Layout from '../layouts/Layout.astro';
         <ul>
           <li>More articles per category</li>
           <li>Russia-specific data visualizations instead of temporary placeholders</li>
-          <li>Custom domain, analytics, and deployment configuration</li>
+          <li>Final custom-domain hardening and HTTPS</li>
           <li>Deeper editorial policy and sourcing standards</li>
         </ul>
       </article>
@@ -49,6 +51,10 @@ import Layout from '../layouts/Layout.astro';
         The repo should aim for concise, cited, non-touristic writing. Strong versions of this project explain
         why a topic matters, where it sits in the broader Russian context, and what an informed reader should
         understand next.
+      </p>
+      <p>
+        Good future work should feel like a disciplined continuation of the original `taiwan-md` idea:
+        country knowledge stored in markdown, easy to fork, easy to audit, and legible both to humans and LLMs.
       </p>
     </section>
   </main>

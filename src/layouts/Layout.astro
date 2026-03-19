@@ -17,7 +17,7 @@ interface Props {
   category?: string;
 }
 
-const { title, description = 'Open-source, AI-friendly knowledge base about Russia', lang = 'en', image, type, datePublished, dateModified, content, tags, category } = Astro.props;
+const { title, description = 'Open-source, AI-friendly knowledge base about Russia and a visible fork of taiwan-md', lang = 'en', image, type, datePublished, dateModified, content, tags, category } = Astro.props;
 
 // Build search index at build time
 const categoryMapping: Record<string, string> = {
@@ -98,6 +98,9 @@ const i18n = {
   }
 };
 
+const repoUrl = 'https://github.com/denis-gordeev/russia-md';
+const upstreamUrl = 'https://github.com/frank890417/taiwan-md';
+
 const navConfig = [
   { path: '/#categories', label: i18n.nav.explore },
   { path: '/about', label: i18n.nav.about },
@@ -164,7 +167,7 @@ const navConfig = [
             }
             return <a href={item.fullPath} class:list={["nav-link", { active: item.active }]}>{item.label}</a>;
           })}
-          <a href="https://github.com/your-username/russia-md" target="_blank" class="nav-link gh">
+          <a href={repoUrl} target="_blank" class="nav-link gh">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             GitHub
           </a>
@@ -174,7 +177,7 @@ const navConfig = [
             return <a href={item.fullPath} class:list={["nav-link", { active: item.active }]} onclick="document.querySelector('.nav-mobile').classList.remove('open')">{item.label}</a>
 
           })}
-          <a href="https://github.com/your-username/russia-md" target="_blank" class="nav-link">GitHub</a>
+          <a href={repoUrl} target="_blank" class="nav-link">GitHub</a>
         </nav>
         <button class="search-toggle" aria-label="Search" onclick="document.getElementById('search-modal').classList.add('open');setTimeout(()=>document.getElementById('search-input').focus(),100)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -268,7 +271,7 @@ const navConfig = [
           <div class="footer-brand">
             <span class="footer-logo">Russia.md</span>
             <p>{i18n.footer.desc}</p>
-            <p class="footer-heart">Forked and rebuilt as a Russia-focused starter atlas</p>
+            <p class="footer-heart">Forked from <a href={upstreamUrl} target="_blank" rel="noopener">taiwan-md</a> and rebuilt as a Russia-focused atlas</p>
             <p class="footer-license">
               <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">
                 <svg width="16" height="16" viewBox="0 0 496 512" fill="currentColor" style="margin-right: 6px;">
@@ -289,7 +292,8 @@ const navConfig = [
           </div>
           <div class="footer-col">
             <h4>{i18n.footer.project}</h4>
-            <a href="https://github.com/your-username/russia-md" target="_blank">GitHub</a>
+            <a href={repoUrl} target="_blank">GitHub</a>
+            <a href={upstreamUrl} target="_blank">Upstream fork source</a>
             <a href="/about">{i18n.footer.about}</a>
             <a href="/resources">Resources</a>
             <a href="/contribute">{i18n.footer.contribute}</a>
@@ -297,8 +301,8 @@ const navConfig = [
           </div>
           <div class="footer-col">
             <h4>{i18n.footer.contact}</h4>
-            <a href="https://github.com/your-username/russia-md/issues" target="_blank">Issues</a>
-            <a href="https://github.com/your-username/russia-md/discussions" target="_blank">Discussions</a>
+            <a href={`${repoUrl}/issues`} target="_blank">Issues</a>
+            <a href={`${repoUrl}/discussions`} target="_blank">Discussions</a>
             <a href="/resources">Official resources</a>
             <a href="/contribute">Contribution guide</a>
           </div>
@@ -318,7 +322,7 @@ const navConfig = [
       // Set .md button href based on current path
       const btn = document.getElementById('md-btn');
       const pathname = window.location.pathname;
-      const ghBase = 'https://github.com/your-username/russia-md/blob/main';
+      const ghBase = 'https://github.com/denis-gordeev/russia-md/blob/main';
       
       let target = '/README.md'; // Default fallback
 

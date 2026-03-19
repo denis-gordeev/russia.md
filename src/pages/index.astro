@@ -16,6 +16,11 @@ import CategoryGrid from '../components/CategoryGrid.astro';
         broad geography, layered history, regional culture, public institutions,
         technology, everyday life, and practical reference links for humans and LLM agents.
       </p>
+      <p class="fork-note">
+        This site is an explicit fork of <a href="https://github.com/frank890417/taiwan-md" target="_blank" rel="noopener">taiwan-md</a>,
+        rebuilt around a Russia-specific corpus and deployed from
+        <a href="https://github.com/denis-gordeev/russia-md" target="_blank" rel="noopener"> denis-gordeev/russia-md</a>.
+      </p>
       <div class="hero-actions">
         <a href="#categories" class="primary">Browse categories</a>
         <a href="/resources" class="secondary">Official resources</a>
@@ -37,8 +42,8 @@ import CategoryGrid from '../components/CategoryGrid.astro';
         can support reading, linking, search, and future agent workflows.
       </p>
       <p>
-        The current version is intentionally narrow and clean: core site shell, a Russia-first
-        category map, starter articles, and a separate <a href="https://github.com/your-username/russia-md/blob/main/SKILLS.md">`SKILLS.md`</a>
+        The current version is intentionally narrow and clean: the upstream `taiwan-md` shell and category logic,
+        a Russia-first content map, starter articles, and a separate <a href="https://github.com/denis-gordeev/russia-md/blob/main/SKILLS.md">`SKILLS.md`</a>
         brief for LLM-agent integrations such as Gosuslugi, VK, Yandex, DaData, and official data sources.
       </p>
     </div>
@@ -89,6 +94,13 @@ import CategoryGrid from '../components/CategoryGrid.astro';
     line-height: 1.75;
     max-width: 720px;
     color: #334155;
+  }
+
+  .fork-note {
+    max-width: 760px;
+    line-height: 1.75;
+    color: #475569;
+    margin-top: 1rem;
   }
 
   .hero-actions {
